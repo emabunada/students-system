@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>{{title}}</title>
+
+    <!--Code For Linking Css File -->
+    <!--    <link rel="stylesheet" href="css/app.css"/>-->
+    <link rel=stylesheet type=text/css href="{{ url_for('static',
+    filename='css/app.css') }}"/>
+
+    <!--Code For Font Awsome -->
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+</head>
+<body>
+<!-- header section -->
+<header class="header">
+    <a href="#" class="logo"
+    ><i class="fa-solid  fa-graduation-cap"></i> student system</a
+    >
+
+    <nav class="navbar">
+        <a href="/">home</a>
+        <a href="/students">students</a>
+        <a href="/courses">courses</a>
+        <a href="/schedules">schedules</a>
+
+    </nav>
+
+    <div class="icons">
+        <div class="fa fa-bars" id="menu-btn"></div>
+        <div class="fa fa-search" id="search-btn"></div>
+        <!--        <div class="fa fa-shopping-cart" id="cart-btn"></div>-->
+        <!--        <div class="fa fa-user" id="login-btn"></div>-->
+    </div>
+
+    <form class="search-form">
+        <input type="search" id="search-box" placeholder="search here ....."/>
+        <label for="search-box" class="fa fa-search"></label>
+    </form>
+</header>
+
+
+<!-- header section -->
+
+<!-- banner section -->
+<!--<section class="home" id="home">-->
+<!--    <div class="content">-->
+<!--        <h3>new products for you</h3>-->
+<!--        <p>-->
+<!--            Lorem ipsum dolor sit amet consectetur adipisicing elit. A aut nam-->
+<!--            ipsam asperiores nihil repellat cum nesciunt.-->
+<!--        </p>-->
+<!--        <a href="#" class="btn">shop now</a>-->
+<!--    </div>-->
+<!--</section>-->
+<!-- banner section -->
+
+<!-- categories section -->
+<!--<section class="categories" id="categories">-->
+<!--    <h2>collections</h2>-->
+
+<!--    <div class="categories-container">-->
+<!--        {%for category in categories%}-->
+<!--        <div class="category-item">-->
+<!--            <img src="{{category.image}}"/>-->
+<!--            <h4>{{category.name}}</h4>-->
+<!--            <br/>-->
+<!--        </div>-->
+<!--        {%endfor%}-->
+<!--    </div>-->
+<!--</section>-->
+<!-- categories section -->
+
+<!-- categories section -->
+<!--<section class="featured" id="featured">-->
+<!--    <h2>featured items</h2>-->
+<!--    <div class="featured-container">-->
+<!--        {%for item in featured_items%}-->
+<!--        <div class="featured-item">-->
+<!--            <img src="{{item.image}}"/>-->
+<!--            <p>{{item.product_name}}</p>-->
+<!--            <br/>-->
+<!--            <p>{{item.price}} $</p>-->
+<!--            <a href="#" class="btn-buy">add to cart</a>-->
+<!--        </div>-->
+<!--        {%endfor%}-->
+<!--    </div>-->
+<!--</section>-->
+<!-- categories section -->
+
+<script src="{{ url_for('static',
+    filename='js/app.js') }}"></script>
+</body>
+</html>
