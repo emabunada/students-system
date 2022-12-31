@@ -1,15 +1,12 @@
+import json
+
 from flask import Flask, render_template, request
 
 from controller.course_controller import CourseController
 from controller.course_schedule_controller import CourseScheduleController
 from controller.student_controller import StudentController
 
-# http://staging.bldt.ca/api/method/build_it.user_api.home.get_home
-
-
 app = Flask(__name__)
-app.jinja_env.lstrip_blocks = True
-app.jinja_env.trim_blocks = True
 
 
 @app.route("/")
@@ -21,8 +18,6 @@ def home():
 @app.route("/students")
 def students_table():
     students = StudentController.get_all_students()
-    for s in students:
-        print(s.BOD)
     context = {'students': students}
     return render_template('students.html', **context)
 
@@ -30,8 +25,6 @@ def students_table():
 @app.route("/courses")
 def courses_table():
     courses = CourseController.get_courses()
-    for c in courses:
-        print(c.course_name)
     context = {'courses': courses}
     return render_template('courses.html', **context)
 
@@ -39,16 +32,19 @@ def courses_table():
 @app.route("/schedules")
 def schedules_table():
     schedules = CourseScheduleController.get_all_course_schedules()
-    for s in schedules:
-        print(s.course_name)
+
     context = {'schedules': schedules}
     return render_template('course_schedules.html', **context)
 
 
-@app.route('/student_details', methods=['GET'])
-def student_details():
-    incomes = [request.get_json()]
-    return '', 204
+@app.route('/student_details/<int:student_id>', methods=['GET'])
+def student_details(student_id):
+    incomes = request.get_json()
+    if incomes["API_KEY"] == '4fa86438-3478-4889-81d1-d02f24f6de25':
+        student = StudentController.get_student_by_id(int(student_id))
+        return {"data": student.to_json()}, 200
+    else:
+        return {"message": "you not authorized to use this api "}, 401
 
 
 if __name__ == "__main__":

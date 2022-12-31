@@ -9,3 +9,14 @@ class Student:
         self.email = email
         self.phone = phone
         self.city = city
+
+    def to_json(self):
+        return {
+            'student_id': self.student_id,
+            'student_name': self.name,
+            'contact_id': self.contact_id,
+            'address_id': self.address_id,
+            'level_id': self.level_id,
+            'BOD': self.BOD,
+
+        }
